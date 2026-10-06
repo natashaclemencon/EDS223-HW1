@@ -1,8 +1,8 @@
 ```{r}
-
-install.packages("sf")
-install.packages("stars")
-install.packages("tmap")
+#options(repos = list(CRAN = "http://cran.rstudio.com/"))
+#install.packages("sf")
+#install.packages("stars")
+#install.packages("tmap")
 
 ```
 ```{r}
@@ -15,7 +15,7 @@ library(tmap)
 
 ```{r}
 # read in geodatabase of EJScreen data at the Census Block Group level
-ejscreen <- sf::st_read(here::here("EDS223-HW1", "data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
+ejscreen <- sf::st_read(here::here("data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
 ```
 
 ```{r}
