@@ -1,0 +1,56 @@
+```{r}
+
+install.packages("sf")
+install.packages("stars")
+install.packages("tmap")
+
+```
+```{r}
+library(tidyverse)
+library(sf)
+library(here)
+library(tmap)
+```
+
+
+```{r}
+# read in geodatabase of EJScreen data at the Census Block Group level
+ejscreen <- sf::st_read(here::here("EDS223-HW1", "data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
+```
+
+```{r}
+glimpse(ejscreen)
+colnames(ejscreen)
+
+
+```
+
+```{r}
+# Select a smaller area to work with
+california <- ejscreen |>
+  filter(ST_ABBREV=="CA") 
+```
+```{r}
+sd <- ejscreen |>
+  filter(CNTY_NAME %in% c("San Diego County")) 
+```
+```{r}
+slo <- ejscreen |>
+  filter(CNTY_NAME %in% c("San Luis Obispo County")) 
+```
+```{r}
+tm_shape(slo) + 
+  tm_polygons(fill = "PM25")
+```
+
+```{r}
+tm_shape(slo)+ 
+  tm_polygons(fill = "D2_CANCER") 
+```
+
+```{r}
+tm_shape(slo)+ 
+  tm_polygons(fill = "CANCER") 
+```
+
+# tracks meant to be homogenous?
