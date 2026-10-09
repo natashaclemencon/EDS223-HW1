@@ -6,6 +6,7 @@
 
 ```
 ```{r}
+# Load packages
 library(tidyverse)
 library(sf)
 library(here)
@@ -14,16 +15,10 @@ library(tmap)
 
 
 ```{r}
-# read in geodatabase of EJScreen data at the Census Block Group level
+# Read in geodatabase of EJScreen data at the Census Block Group level
 ejscreen <- sf::st_read(here::here("data", "ejscreen","EJSCREEN_2023_BG_StatePct_with_AS_CNMI_GU_VI.gdb"))
 ```
 
-```{r}
-glimpse(ejscreen)
-colnames(ejscreen)
-
-
-```
 
 ```{r}
 # Select a smaller area to work with
@@ -31,26 +26,21 @@ california <- ejscreen |>
   filter(ST_ABBREV=="CA") 
 ```
 ```{r}
-sd <- ejscreen |>
-  filter(CNTY_NAME %in% c("San Diego County")) 
-```
-```{r}
 slo <- ejscreen |>
   filter(CNTY_NAME %in% c("San Luis Obispo County")) 
 ```
 ```{r}
+# Map percentiles of PM 2.5 in SLO county 
 tm_shape(slo) + 
-  tm_polygons(fill = "PM25")
+  tm_polygons(fill = "P_PM25", fill.legend = tm_legend(title = "PM 2.5 Percentile",))+
+  tm_title("PM2.5 Concentrations in San Luis Obispo County", size=1) +
+  tm_graticules(labels.size=.45) 
 ```
 
 ```{r}
+# Map percentiles of cancer in SLO county 
 tm_shape(slo)+ 
-  tm_polygons(fill = "D2_CANCER") 
+  tm_polygons(fill = "P_CANCER", fill.legend = tm_legend(title = "Cancer Percentile",)) +
+  tm_title("Cancer in San Luis Obispo County", size=1)+
+  tm_graticules(labels.size=.45) 
 ```
-
-```{r}
-tm_shape(slo)+ 
-  tm_polygons(fill = "CANCER") 
-```
-
-# tracks meant to be homogenous?
