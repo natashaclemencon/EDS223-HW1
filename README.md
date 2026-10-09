@@ -4,6 +4,7 @@ Repository for the first homework assignment in EDS 223
 This repository houses data from the US Environmental Protection Agency’s Environmental Justice Screening and Mapping Tool. This tool no longer exists with the EPA, but an unofficial version of it can be accessed from https://pedp-ejscreen.azurewebsites.net/ . 
 
 This repo has the following structure: 
+```{r}
 EDS223-HW1  
 └───EDS223-HW1
     └───data
@@ -12,6 +13,7 @@ EDS223-HW1
     └─── ej_screen.html
     └─── ej_screen.qmd
     └─── README.md
+ ```
 
 The graphing for this assignment was completed in the ej_screen.qmd.
 
